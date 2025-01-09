@@ -1,7 +1,8 @@
 import "./App.scss";
 
-import DataPanel from "component/dataPanel";
+import InputPanel from "component/inputPanel";
 import Navbar from "component/navbar";
+import OutputPanel from "component/outputPanel";
 import Sidebar from "component/sidebar";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
       <Navbar />
       <section>
         <Sidebar />
-        <DataPanel />
+        <InputPanel />
+        <OutputPanel />
       </section>
     </div>
   );

@@ -1,0 +1,65 @@
+.container {
+  padding: 4px 12px;
+}
+
+.navbar {
+  background-color: black;
+  color: white;
+
+  &__elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 56px;
+      height: 64px;
+      margin-right: 12px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 8px;
+  }
+
+  select {
+    background: rgb(17, 24, 39);
+    color: white;
+    border: 1px solid rgb(55, 65, 81);
+    border-radius: 8px;
+    padding: 4px 0;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+
+    svg {
+      width: 11px;
+      height: 14px;
+    }
+  }
+
+  .primary-btn {
+    background-color: green;
+  }
+
+  .secondary-btn {
+    background-color: red;
+  }
+}

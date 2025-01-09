@@ -1,3 +1,13 @@
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  & > section {
+    display: grid;
+    grid-template-columns: 5rem 1fr 1fr;
+  }
+}
+
 .container {
   padding: 4px 12px;
 }
@@ -61,5 +71,24 @@
 
   .secondary-btn {
     background-color: red;
+  }
+}
+
+.sidebar {
+  padding: 16px;
+  display: inline-block;
+  color: white;
+  background: black;
+  height: 100%;
+
+  .icon__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
   }
 }

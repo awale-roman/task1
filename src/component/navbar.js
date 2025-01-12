@@ -1,7 +1,14 @@
-import { FaPlay, FaStop } from "react-icons/fa";
 import { ideThemes, languages } from "helpers/staticData";
+import { FaPlay, FaStop } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({
+  onHandleRun,
+  onHandleStop,
+  isConnected,
+  language,
+  setLanguage,
+  isSocketRunning,
+}) => {
   return (
     <div className="navbar">
       <div className="container">
@@ -13,10 +20,20 @@ const Navbar = () => {
           <div className="navbar__items">
             {!!languages?.length && (
               <div>
-                <select name="languages" id="languages">
-                  {languages.map((language) => (
-                    <option key={language} value={language}>
-                      {language}
+                <select
+                  name="languages"
+                  id="languages"
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                  }}
+                >
+                  {languages.map((languageOption) => (
+                    <option
+                      key={languageOption}
+                      value={languageOption}
+                      selected={languageOption === language}
+                    >
+                      {languageOption}
                     </option>
                   ))}
                 </select>
@@ -35,11 +52,15 @@ const Navbar = () => {
               </div>
             )}
 
-            <button className="primary-btn">
+            <button className="primary-btn" onClick={onHandleRun}>
               <FaPlay />
               Run
             </button>
-            <button className="secondary-btn">
+            <button
+              className="secondary-btn"
+              onClick={onHandleStop}
+              disabled={!isSocketRunning}
+            >
               <FaStop />
               Stop
             </button>

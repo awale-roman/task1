@@ -1,12 +1,17 @@
 import { sidebarItems } from "helpers/staticData";
 
-const Sidebar = () => {
+const Sidebar = ({ setLanguage }) => {
   return (
     <div className="sidebar">
       {sidebarItems.map(({ title, icon }) => {
         const Icon = icon;
         return (
-          <p className="icon__wrapper">
+          <p
+            className="icon__wrapper"
+            onClick={() => {
+              setLanguage(title);
+            }}
+          >
             <span>{title}</span>
             <Icon />
           </p>

@@ -1,5 +1,5 @@
-import { ideThemes, languages } from "helpers/staticData";
 import { FaPlay, FaStop } from "react-icons/fa";
+import { ideThemes, languages } from "helpers/staticData";
 
 const Navbar = ({
   onHandleRun,

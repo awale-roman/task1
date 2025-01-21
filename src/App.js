@@ -2,6 +2,7 @@ import "./App.scss";
 
 import { useEffect, useState } from "react";
 
+import AdditionalInput from "component/additionalInput";
 import InputPanel from "component/inputPanel";
 import Navbar from "component/navbar";
 import OutputPanel from "component/outputPanel";
@@ -10,20 +11,22 @@ import Sidebar from "component/sidebar";
 function App() {
   const [socket, setSocket] = useState("");
   const [code, setCode] = useState("");
+  const [additionalInput, setAdditionalInput] = useState("");
   const [output, setOutput] = useState([]);
   const [language, setLanguage] = useState("javascript");
   const [isSocketRunning, setIsSocketRunning] = useState(false);
 
   const handleSend = () => {
-    if (!!socket && socket.readyState === WebSocket.OPEN) {
+    if (socket && socket.readyState === WebSocket.OPEN) {
       const messageToSend = {
-        command: "run",
+        command: additionalInput ? "input" : "run",
         code: code,
-        input: "",
         language: language,
+        input: additionalInput,
       };
       socket.send(JSON.stringify(messageToSend));
       setOutput("");
+      setAdditionalInput("");
     }
   };
 
@@ -63,7 +66,13 @@ function App() {
       <section>
         <Sidebar setLanguage={setLanguage} />
         <InputPanel code={code} setCode={setCode} />
-        <OutputPanel output={output} setOutput={setOutput} />
+        <div>
+          <AdditionalInput
+            additionalInput={additionalInput}
+            setAdditionalInput={setAdditionalInput}
+          />
+          <OutputPanel output={output} setOutput={setOutput} />
+        </div>
       </section>
     </div>
   );
